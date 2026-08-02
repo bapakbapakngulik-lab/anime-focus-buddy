@@ -7,10 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "test": "node --test test/",
-    "check-key": "node tools/check-key.mjs",
-    "set-key": "node tools/set-key.mjs",
-    "models": "node tools/list-models.mjs"
+    "test": "node --test test/"
   },
   "keywords": ["gemini", "chatbot", "pomodoro", "adhd", "anime", "hacktiv8"],
   "license": "MIT",

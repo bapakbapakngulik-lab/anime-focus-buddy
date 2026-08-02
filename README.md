@@ -85,17 +85,10 @@ npm install
 
 ### 3. Konfigurasi API key
 
-Cara termudah — salin key dari AI Studio (pakai tombol **copy**, jangan blok manual),
-lalu:
+Ambil key di <https://aistudio.google.com/apikey> — salin pakai **tombol copy**,
+jangan blok manual, karena key di halaman itu ditampilkan tersamar.
 
-```bash
-npm run set-key
-```
-
-Perintah ini membaca key dari clipboard, memvalidasi bentuknya, dan menulis `.env`
-sendiri. Kalau isi clipboard bukan key yang benar, ia menolak menulis file.
-
-Mau membuatnya manual? Buat file bernama `.env` di folder proyek dengan isi:
+Buat file bernama `.env` di folder proyek dengan isi:
 
 ```env
 GEMINI_API_KEY=AQ.Ab...isi_key_kamu_di_sini
@@ -105,7 +98,7 @@ PORT=3000
 | Variabel | Wajib | Keterangan |
 |---|---|---|
 | `GEMINI_API_KEY` | ya | API key dari <https://aistudio.google.com/apikey>. Format terbaru diawali `AQ.` |
-| `GEMINI_MODEL` | tidak | Default `gemini-flash-latest`. Lihat pilihan dengan `npm run models` |
+| `GEMINI_MODEL` | tidak | Default `gemini-flash-latest`. Isi nama model lain kalau default-nya tidak tersedia |
 | `PORT` | tidak | Default `3000` |
 | `GEMINI_DAILY_LIMIT` | tidak | Default `20`, mengikuti batas free tier |
 
@@ -114,11 +107,8 @@ PORT=3000
 > sejak 19 Juni 2026 dan dimatikan total September 2026. Aplikasi ini menerima
 > keduanya, tapi memperingatkan kalau kamu masih memakai format lama.
 
-Untuk memastikan key-nya benar tanpa membuka file (aman saat share screen):
-
-```bash
-npm run check-key
-```
+Saat server dijalankan, bentuk key diperiksa otomatis dan masalahnya dilaporkan
+di terminal — misalnya key kepotong atau masih memakai format lama.
 
 > Tanpa API key aplikasi **tetap jalan** dalam *mode demo* dengan jawaban cadangan,
 > supaya bisa dicoba dulu. Setiap balasan menandai asalnya di field `source`.
@@ -237,10 +227,7 @@ anime-focus-buddy/
 │  ├─ index.html · style.css · app.js
 │  └─ img/                8 sprite: {girl,boy}_{idle,focus,cheer,rest}.png
 ├─ docs/                  Screenshot aplikasi
-├─ test/                  58 test (node:test, tanpa dependency)
-├─ tools/                 set-key · check-key · list-models
-├─ CLAUDE.md              Panduan untuk Claude Code
-└─ TDD.md                 Technical Design Document
+└─ test/                  58 test (node:test, tanpa dependency)
 ```
 
 ---
@@ -268,8 +255,6 @@ ComfyUI tidak dipanggil saat runtime.
 | Frontend | HTML/CSS/JS vanilla — tanpa build step |
 | Testing | `node:test` bawaan Node |
 | Aset gambar | ComfyUI |
-
-Alasan di balik tiap keputusan ada di **[TDD.md](TDD.md)** (tabel D1–D9).
 
 ---
 

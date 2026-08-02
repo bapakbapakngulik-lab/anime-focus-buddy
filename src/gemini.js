@@ -18,8 +18,8 @@ import { recordCall, usage } from './quota.js';
  * `gemini-flash-latest` adalah alias yang selalu menunjuk model Flash terbaru,
  * jadi tidak ikut mati saat versi tertentu dipensiunkan.
  *
- * Bisa ditimpa lewat GEMINI_MODEL di .env. Lihat daftar yang tersedia untuk
- * API key-mu dengan: npm run models
+ * Bisa ditimpa lewat GEMINI_MODEL di .env kalau default-nya tidak tersedia
+ * untuk API key yang dipakai.
  */
 export const DEFAULT_MODEL = 'gemini-flash-latest';
 
@@ -93,7 +93,7 @@ export function inspectKey(key = process.env.GEMINI_API_KEY ?? '') {
       format: null,
       warning:
         `Awalan key ("${key.slice(0, 3)}...") tidak dikenal aplikasi ini. ` +
-        'Mungkin format baru dari Google — tetap dicoba. Jalankan "npm run check-key" untuk tes sungguhan.',
+        'Mungkin format baru dari Google — key tetap dicoba, bukan diblokir.',
     };
   }
   if (format.deprecated) {
@@ -112,7 +112,7 @@ export function inspectKey(key = process.env.GEMINI_API_KEY ?? '') {
 
 /**
  * Satu-satunya pemeriksaan yang benar-benar berwenang: kirim satu request kecil
- * ke Gemini dan lihat jawabannya. Dipakai `npm run check-key`.
+ * ke Gemini dan lihat jawabannya.
  */
 export async function pingKey() {
   const client = getClient();
@@ -154,7 +154,7 @@ export function describeError(err) {
     return 'Tidak bisa menjangkau server Google. Cek koneksi internet atau proxy.';
   }
   if (/NOT_FOUND|404/.test(raw)) {
-    return `Model "${getModel()}" tidak tersedia untuk API key ini. Jalankan "npm run models" untuk melihat daftar model yang bisa dipakai, lalu set GEMINI_MODEL di .env.`;
+    return `Model "${getModel()}" tidak tersedia untuk API key ini. Ganti dengan model lain lewat GEMINI_MODEL di file .env.`;
   }
   return `Gemini menolak request: ${raw.slice(0, 200)}`;
 }

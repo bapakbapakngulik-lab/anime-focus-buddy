@@ -1,9 +1,11 @@
 node_modules/
 .env
 package-lock.json
-
-# Generator sprite: berisi parameter & prompt karakter, sengaja tidak dipublikasikan.
-# Filenya tetap ada di lokal untuk regenerasi bila diperlukan.
-tools/generate-characters.py
 npm-debug.log*
 .DS_Store
+
+# Dokumen & skrip internal — bukan bagian dari deliverable Hacktiv8,
+# tetap tersimpan lokal tapi tidak dipublikasikan ke repo.
+tools/
+CLAUDE.md
+TDD.md
