@@ -1,0 +1,209 @@
+:root {
+  --bg: #12101a;
+  --card: #1d1a2b;
+  --card-2: #272338;
+  --line: #37324d;
+  --text: #ece9f6;
+  --muted: #9d95bb;
+  --pink: #ff7eb6;
+  --mint: #6ee7c7;
+  --amber: #ffc46b;
+  --danger: #ff7a7a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 20% 0%, #241f38 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: minmax(280px, 400px) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ---------- panggung buddy ---------- */
+
+.stage {
+  position: sticky;
+  top: 24px;
+  background: linear-gradient(180deg, var(--card) 0%, #191627 100%);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+}
+
+.char-picker { display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; }
+
+.char-btn {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card-2);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all .15s;
+}
+.char-btn.active { border-color: var(--pink); color: var(--text); background: #33263c; }
+
+.buddy { position: relative; }
+
+.buddy img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto;
+  background: var(--card-2);
+  aspect-ratio: 832 / 1216;
+  object-fit: cover;
+}
+
+.bubble {
+  margin: -28px auto 0;
+  position: relative;
+  width: 92%;
+  background: #fdf6ff;
+  color: #241f38;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  text-align: left;
+}
+
+.bubble.error { background: #ffe2e2; color: #6b1f1f; border-left: 4px solid var(--danger); }
+
+.timer { margin-top: 18px; }
+.phase { color: var(--mint); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.clock { font-size: 52px; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.rounds { color: var(--muted); font-size: 13px; }
+.params {
+  margin-top: 8px;
+  color: var(--amber);
+  font-size: 11px;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  opacity: .8;
+}
+.quota { margin-top: 4px; color: var(--muted); font-size: 11px; }
+.quota.low { color: var(--danger); font-weight: 600; }
+
+/* ---------- panel ---------- */
+
+.panel { display: flex; flex-direction: column; gap: 16px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.card h2 { margin: 0 0 10px; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; color: var(--amber); }
+
+.hint { color: var(--muted); font-size: 12px; margin: 0 0 10px; }
+
+.active-task {
+  background: var(--card-2);
+  border-left: 3px solid var(--pink);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+.active-task.empty { color: var(--muted); border-left-color: var(--line); font-size: 14px; }
+
+.row { display: flex; gap: 8px; }
+.row.wrap { flex-wrap: wrap; margin-top: 10px; }
+
+input[type=text] {
+  flex: 1;
+  min-width: 0;
+  background: var(--card-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 14px;
+}
+input[type=text]:focus { outline: none; border-color: var(--pink); }
+
+button {
+  background: var(--pink);
+  color: #241f38;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: filter .15s;
+}
+button:hover { filter: brightness(1.1); }
+button:disabled { opacity: .4; cursor: not-allowed; filter: grayscale(1); }
+
+/* Tombol sekunder tetap harus terbaca "bisa diklik". Versi sebelumnya memakai
+   warna --muted sehingga tampak disabled padahal aktif. */
+button.ghost {
+  background: var(--card-2);
+  color: var(--text);
+  border: 1px solid #4b4470;
+}
+button.ghost:hover { background: #3a3355; border-color: var(--pink); }
+button.ghost:active { transform: translateY(1px); }
+button.primary { background: var(--mint); }
+button.danger { color: #d9b8d0; }
+button.danger:hover { color: var(--danger); border-color: var(--danger); }
+
+.steps { margin: 12px 0 0; padding-left: 20px; color: var(--text); font-size: 14px; }
+.steps li { margin-bottom: 6px; }
+.steps li:first-child { color: var(--mint); font-weight: 600; }
+
+.parked { list-style: none; margin: 10px 0 0; padding: 0; max-height: 130px; overflow-y: auto; }
+.parked li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 6px 10px;
+  background: var(--card-2);
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+/* ---------- chat ---------- */
+
+.chat { max-height: 240px; overflow-y: auto; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; }
+
+.msg { font-size: 14px; line-height: 1.5; padding: 9px 12px; border-radius: 12px; max-width: 85%; }
+.msg.user { background: var(--card-2); align-self: flex-end; }
+.msg.buddy { background: #33263c; border: 1px solid var(--line); align-self: flex-start; }
+.msg.typing { color: var(--muted); font-style: italic; }
+.msg.error { background: #3d2230; border-color: var(--danger); color: #ffc9c9; }
+
+.mode { color: var(--muted); font-size: 12px; text-align: center; }
+.mode.warn {
+  color: #ffd9a0;
+  background: #4a2f1a;
+  border: 1px solid #7a4d22;
+  border-radius: 10px;
+  padding: 10px 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; }
+  .stage { position: static; }
+  .buddy img { max-width: 240px; }
+}

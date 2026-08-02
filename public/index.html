@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Focus Buddy</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- Kolom kiri: buddy + timer -->
+    <section class="stage">
+      <div class="char-picker" id="charPicker"></div>
+
+      <div class="buddy">
+        <img id="sprite" src="/img/girl_idle.png" alt="Buddy anime" />
+        <div class="bubble" id="bubble">Halo! Pilih satu tugas dulu ya — cuma satu. 🌸</div>
+      </div>
+
+      <div class="timer">
+        <div class="phase" id="phaseLabel">Belum mulai</div>
+        <div class="clock" id="clock">25:00</div>
+        <div class="rounds" id="rounds">Ronde selesai: 0</div>
+        <div class="params" id="params" title="Konfigurasi Gemini untuk karakter ini"></div>
+        <div class="quota" id="quota" title="Free tier Gemini dibatasi 20 request per hari"></div>
+      </div>
+    </section>
+
+    <!-- Kolom kanan: kontrol + chat -->
+    <section class="panel">
+      <div class="card">
+        <h2>Satu Tugas Saja</h2>
+        <div class="active-task" id="activeTask">Belum ada tugas aktif.</div>
+        <form id="taskForm" class="row">
+          <input id="taskInput" type="text" placeholder="Mau kerjain apa? (satu saja)" autocomplete="off" />
+          <button type="submit">Mulai</button>
+        </form>
+        <div class="row wrap">
+          <button id="btnBreakdown" class="ghost">Pecah jadi langkah kecil</button>
+          <button id="btnDistracted" class="ghost">Aku kedistract</button>
+          <button id="btnStuck" class="ghost">Mentok</button>
+          <button id="btnComplete" class="primary">Selesai ✓</button>
+          <button id="btnDrop" class="ghost danger">Nyerah dulu</button>
+        </div>
+        <ol class="steps" id="steps"></ol>
+      </div>
+
+      <div class="card">
+        <h2>Parkiran Ide</h2>
+        <p class="hint">Ide yang muncul di tengah kerja masuk sini, bukan dikerjakan sekarang.</p>
+        <form id="parkForm" class="row">
+          <input id="parkInput" type="text" placeholder="Ide/distraksi yang muncul..." autocomplete="off" />
+          <button type="submit" class="ghost">Parkir</button>
+        </form>
+        <ul class="parked" id="parked"></ul>
+      </div>
+
+      <div class="card chat-card">
+        <h2>Ngobrol sama buddy</h2>
+        <div class="chat" id="chat"></div>
+        <form id="chatForm" class="row">
+          <input id="chatInput" type="text" placeholder="Tulis sesuatu..." autocomplete="off" />
+          <button type="submit">Kirim</button>
+        </form>
+      </div>
+
+      <div class="mode" id="mode"></div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

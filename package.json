@@ -1,0 +1,23 @@
+{
+  "name": "anime-focus-buddy",
+  "version": "1.0.0",
+  "description": "MVP Chatbot Anime penyemangat kerja: Pomodoro + aturan Satu Tugas Saja, dirancang untuk otak ADHD. Final Project Hacktiv8 - AI Productivity and AI API Integration for Developers.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "node --test test/",
+    "check-key": "node tools/check-key.mjs",
+    "set-key": "node tools/set-key.mjs",
+    "models": "node tools/list-models.mjs"
+  },
+  "keywords": ["gemini", "chatbot", "pomodoro", "adhd", "anime", "hacktiv8"],
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
