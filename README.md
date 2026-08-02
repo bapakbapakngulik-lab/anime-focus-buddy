@@ -230,14 +230,15 @@ anime-focus-buddy/
 ├─ index.js               Express server + semua route
 ├─ src/
 │  ├─ session.js          Aturan sesi (satu tugas, Pomodoro, parkiran) — murni, tanpa I/O
-│  ├─ prompt.js           Persona karakter + perakitan prompt — murni, tanpa I/O
+│  ├─ prompt.js           Persona, parameter model, kalimat lokal — murni, tanpa I/O
+│  ├─ quota.js            Penghitung jatah harian Gemini — murni, tanpa I/O
 │  └─ gemini.js           Adapter @google/genai (+ mode demo)
 ├─ public/
 │  ├─ index.html · style.css · app.js
 │  └─ img/                8 sprite: {girl,boy}_{idle,focus,cheer,rest}.png
-├─ test/                  31 test (node:test, tanpa dependency)
-├─ tools/
-│  └─ generate-characters.py   Generator sprite via ComfyUI
+├─ docs/                  Screenshot aplikasi
+├─ test/                  58 test (node:test, tanpa dependency)
+├─ tools/                 set-key · check-key · list-models
 ├─ CLAUDE.md              Panduan untuk Claude Code
 └─ TDD.md                 Technical Design Document
 ```
@@ -246,20 +247,13 @@ anime-focus-buddy/
 
 ## Aset Karakter
 
-8 sprite di-generate lokal dengan **ComfyUI**.
+8 sprite di-generate lokal dengan **ComfyUI**, lalu dipakai sebagai aset statis —
+ComfyUI tidak dipanggil saat runtime.
 
 | Karakter | idle | focus | cheer | rest |
 |---|---|---|---|---|
 | **Aira** (perempuan) | menyapa | menyemangati | merayakan | santai dengan teh |
 | **Kenta** (laki-laki) | menyapa | menyemangati | merayakan | santai dengan teh |
-
-Regenerasi (butuh ComfyUI jalan di `127.0.0.1:8188`):
-
-```bash
-python tools/generate-characters.py
-```
-
-Gambar dipakai sebagai **aset statis** — ComfyUI tidak dipanggil saat runtime.
 
 ---
 

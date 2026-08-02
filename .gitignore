@@ -1,5 +1,9 @@
 node_modules/
 .env
 package-lock.json
+
+# Generator sprite: berisi parameter & prompt karakter, sengaja tidak dipublikasikan.
+# Filenya tetap ada di lokal untuk regenerasi bila diperlukan.
+tools/generate-characters.py
 npm-debug.log*
 .DS_Store
