@@ -3,7 +3,7 @@
 > Chatbot anime penyemangat kerja: **Pomodoro + aturan Satu Tugas Saja**, dirancang untuk otak ADHD.
 
 **Final Project** — Hacktiv8: *AI Productivity and AI API Integration for Developers*
-Ditenagai **Gemini 2.5 Flash** (`@google/genai`) · Node.js + Express
+Ditenagai **Gemini** (`@google/genai`, model `gemini-flash-latest`) · Node.js + Express
 
 ---
 
