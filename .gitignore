@@ -3,9 +3,3 @@ node_modules/
 package-lock.json
 npm-debug.log*
 .DS_Store
-
-# Dokumen & skrip internal — bukan bagian dari deliverable Hacktiv8,
-# tetap tersimpan lokal tapi tidak dipublikasikan ke repo.
-tools/
-CLAUDE.md
-TDD.md
