@@ -269,6 +269,23 @@ async function boot() {
 
   const { data } = await api(`/api/state?character=${character}`);
   render(data);
+  greet(data.state);
+}
+
+/**
+ * Sapaan pembuka disesuaikan dengan kondisi sesi. Tanpa ini, membuka ulang
+ * halaman saat sedang fokus tetap menampilkan "pilih satu tugas dulu" —
+ * bertentangan dengan tugas yang jelas-jelas sedang aktif.
+ */
+function greet(state) {
+  if (!state) return;
+  if (state.activeTask) {
+    say(`Lanjut ya — "${state.activeTask}" dulu sampai selesai. Sisanya nanti.`);
+  } else if (state.phase === 'break' || state.phase === 'long_break') {
+    say('Istirahat dulu yang bener. Jangan curi-curi kerja ya.');
+  } else {
+    say('Halo! Pilih satu tugas dulu ya — cuma satu. 🌸');
+  }
 }
 
 boot();

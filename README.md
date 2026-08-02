@@ -7,6 +7,21 @@ Ditenagai **Gemini** (`@google/genai`, model `gemini-flash-latest`) · Node.js +
 
 ---
 
+## Tampilan Aplikasi
+
+**1. Belum ada tugas** — buddy menyapa dan meminta kamu memilih **satu** tugas saja.
+Di bawah timer terlihat konfigurasi Gemini yang sedang aktif untuk karakter ini.
+
+![Tampilan awal Anime Focus Buddy](docs/01-tampilan-awal.png)
+
+**2. Sedang fokus** — tugas aktif terkunci (kolom input mati sampai tugasnya selesai),
+Gemini sudah memecahnya jadi 3 langkah mikro, dan dua ide yang muncul di tengah kerja
+masuk ke Parkiran Ide alih-alih mengganggu fokus.
+
+![Kondisi sedang fokus dengan langkah mikro dan parkiran ide](docs/02-sedang-fokus.png)
+
+---
+
 ## Kenapa ini ada
 
 Timer Pomodoro biasa cuma menghitung mundur. Untuk otak ADHD, tiga masalah ini
