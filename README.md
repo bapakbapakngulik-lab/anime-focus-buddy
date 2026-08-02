@@ -246,8 +246,7 @@ anime-focus-buddy/
 
 ## Aset Karakter
 
-8 sprite di-generate lokal dengan **ComfyUI** (SDXL — `waiIllustriousSDXL_v170`),
-832×1216, 28 langkah, `euler_ancestral`, CFG 5.5.
+8 sprite di-generate lokal dengan **ComfyUI**.
 
 | Karakter | idle | focus | cheer | rest |
 |---|---|---|---|---|
@@ -274,7 +273,7 @@ Gambar dipakai sebagai **aset statis** — ComfyUI tidak dipanggil saat runtime.
 | Prompting | `systemInstruction` + `temperature`/`top_p`/`top_k` + `responseSchema` |
 | Frontend | HTML/CSS/JS vanilla — tanpa build step |
 | Testing | `node:test` bawaan Node |
-| Aset gambar | ComfyUI + SDXL/Illustrious |
+| Aset gambar | ComfyUI |
 
 Alasan di balik tiap keputusan ada di **[TDD.md](TDD.md)** (tabel D1–D9).
 
