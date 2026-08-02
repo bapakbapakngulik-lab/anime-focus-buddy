@@ -24,7 +24,8 @@ test('prefix tak dikenal TIDAK diblokir, hanya diberi catatan', () => {
   const r = inspectKey('ZZ.baru' + 'x'.repeat(40));
   assert.equal(r.ok, true, 'format masa depan tidak boleh ikut terblokir');
   assert.equal(r.reason, 'UNKNOWN_PREFIX');
-  assert.match(r.warning, /check-key/);
+  assert.ok(r.warning?.length > 0, 'tetap harus ada catatan, bukan diam-diam lolos');
+  assert.match(r.warning, /tetap dicoba|bukan diblokir/);
 });
 
 test('key kosong terdeteksi', () => {
